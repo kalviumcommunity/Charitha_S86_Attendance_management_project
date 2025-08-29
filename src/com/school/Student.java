@@ -11,6 +11,16 @@ public class Student {
         this.studentId = nextStudentIdCounter++;
     }
 
+    // Getters
+    public int getStudentId() {
+        return studentId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    // Display method
     public void displayDetails() {
         System.out.println("Student ID: S" + studentId + ", Name: " + name);
     }
