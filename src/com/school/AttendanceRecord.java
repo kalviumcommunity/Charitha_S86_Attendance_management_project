@@ -1,25 +1,26 @@
-// src/com/school/AttendanceRecord.java
 package com.school;
 
 public class AttendanceRecord {
     private int studentId;
     private int courseId;
-    private String status;
+    private String status; // "Present", "Absent", or "Invalid"
 
-    // Constructor with validation
     public AttendanceRecord(int studentId, int courseId, String status) {
         this.studentId = studentId;
         this.courseId = courseId;
 
-        if (status.equalsIgnoreCase("Present") || status.equalsIgnoreCase("Absent")) {
-            this.status = status;
+        if (status == null) {
+            this.status = "Invalid";
+            System.out.println("Warning: attendance status is null for student S" + studentId + " course C" + courseId + ". Marked as Invalid.");
+        } else if (status.equalsIgnoreCase("Present") || status.equalsIgnoreCase("Absent")) {
+            // Normalize to Title case
+            this.status = status.substring(0,1).toUpperCase() + status.substring(1).toLowerCase();
         } else {
             this.status = "Invalid";
-            System.out.println("⚠️ Warning: Invalid attendance status provided for Student ID: S" + studentId);
+            System.out.println("Warning: invalid attendance status '" + status + "' for student S" + studentId + " course C" + courseId + ". Marked as Invalid.");
         }
     }
 
-    // Getters
     public int getStudentId() {
         return studentId;
     }
@@ -32,10 +33,7 @@ public class AttendanceRecord {
         return status;
     }
 
-    // Display record
     public void displayRecord() {
-        System.out.println("Student ID: S" + studentId +
-                           ", Course ID: C" + courseId +
-                           ", Status: " + status);
+        System.out.println("Attendance - Student S" + studentId + ", Course C" + courseId + " : " + status);
     }
 }

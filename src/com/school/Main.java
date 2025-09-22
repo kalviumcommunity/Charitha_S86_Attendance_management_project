@@ -1,4 +1,3 @@
-// src/com/school/Main.java
 package com.school;
 
 import java.util.ArrayList;
@@ -8,46 +7,62 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to the Attendance Management System!");
 
-        // Create students
+        // Create Persons (Students now have grade)
         Student[] students = {
-            new Student("Charitha"),
-            new Student("Chetan"),
-            new Student("Sanjeev"),
-            new Student("Sanjana")
+            new Student("Sonali", "10"),
+            new Student("Charitha", "10"),
+            new Student("Sravani", "11"),
+            new Student("Sharon", "12")
         };
 
-        // Create courses
+        // Teachers and staff
+        Teacher[] teachers = {
+            new Teacher("Mr. Rao", "DBMS"),
+            new Teacher("Ms. Anita", "OOPS")
+        };
+
+        Staff[] staffs = {
+            new Staff("Mr. Kumar", "Clerk"),
+            new Staff("Ms. Maya", "Librarian")
+        };
+
         Course[] courses = {
             new Course("DBMS"),
             new Course("OOPS"),
             new Course("Computer Networks")
         };
 
-        // Print students
         System.out.println("\n--- Student List ---");
         for (Student s : students) {
             s.displayDetails();
         }
 
-        // Print courses
+        System.out.println("\n--- Teacher List ---");
+        for (Teacher t : teachers) {
+            t.displayDetails();
+        }
+
+        System.out.println("\n--- Staff List ---");
+        for (Staff st : staffs) {
+            st.displayDetails();
+        }
+
         System.out.println("\n--- Course List ---");
         for (Course c : courses) {
             c.displayDetails();
         }
 
-        // Attendance log
+        // --- Attendance recording (uses student.getId()) ---
         List<AttendanceRecord> attendanceLog = new ArrayList<>();
 
-        // Add attendance records (valid + invalid)
-        attendanceLog.add(new AttendanceRecord(students[0].getStudentId(), courses[0].getCourseId(), "Present"));
-        attendanceLog.add(new AttendanceRecord(students[1].getStudentId(), courses[1].getCourseId(), "Absent"));
-        attendanceLog.add(new AttendanceRecord(students[2].getStudentId(), courses[2].getCourseId(), "Late")); // invalid
-        attendanceLog.add(new AttendanceRecord(students[3].getStudentId(), courses[0].getCourseId(), "Present"));
+        attendanceLog.add(new AttendanceRecord(students[0].getId(), courses[0].getCourseId(), "Present"));
+        attendanceLog.add(new AttendanceRecord(students[1].getId(), courses[1].getCourseId(), "Absent"));
+        attendanceLog.add(new AttendanceRecord(students[2].getId(), courses[2].getCourseId(), "present"));
+        attendanceLog.add(new AttendanceRecord(students[3].getId(), courses[0].getCourseId(), "On Leave")); // invalid
 
-        // Display attendance log
         System.out.println("\n--- Attendance Log ---");
-        for (AttendanceRecord record : attendanceLog) {
-            record.displayRecord();
+        for (AttendanceRecord r : attendanceLog) {
+            r.displayRecord();
         }
     }
 }

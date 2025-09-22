@@ -1,4 +1,4 @@
-// src/com/school/Course.java
+
 package com.school;
 
 public class Course {
@@ -11,7 +11,7 @@ public class Course {
         this.courseId = nextCourseIdCounter++;
     }
 
-    // Getters
+    // getters (encapsulation)
     public int getCourseId() {
         return courseId;
     }
@@ -20,7 +20,6 @@ public class Course {
         return courseName;
     }
 
-    // Display method
     public void displayDetails() {
         System.out.println("Course: " + courseName + " (C" + courseId + ")");
     }
