@@ -18,3 +18,4 @@ public class Teacher extends Person {
         System.out.println("Role: Teacher, Subject: " + subjectTaught);
     }
 }
+
