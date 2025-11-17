@@ -1,7 +1,7 @@
 package com.school;
 
-public abstract class Person {
-    private static int nextIdCounter = 1;   
+public abstract class Person implements Storable {
+    private static int nextIdCounter = 1;
     protected int id;
     protected String name;
 
@@ -20,5 +20,11 @@ public abstract class Person {
 
     public void displayDetails() {
         System.out.println("ID: " + id + ", Name: " + name);
+    }
+
+    @Override
+    public String toDataString() {
+        // id,name
+        return id + "," + name;
     }
 }

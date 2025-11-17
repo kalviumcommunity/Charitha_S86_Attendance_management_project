@@ -1,0 +1,4 @@
+1,Charitha,18
+2,Bhanu,29
+3,Pinky,DBMS
+4,Sanjana,Admin
